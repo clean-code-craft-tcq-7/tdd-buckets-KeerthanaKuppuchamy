@@ -1,22 +1,22 @@
 package range;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Map;
-
-import com.opencsv.CSVWriter;
+import java.util.List;
 
 public class CSVExporter {
 
-	public static void exportToCSV(Map<String, Integer> map) throws IOException {
-		File file = new File("./range_readings.csv");
-		CSVWriter writer = new CSVWriter(new FileWriter(file));
-		writer.writeNext(new String[] { "Range", "Readings" });
-		for (Map.Entry<String, Integer> loopMap : map.entrySet()) {
-			writer.writeNext(new String[] { loopMap.getKey(), String.valueOf(loopMap.getValue()) });
+	public static void printRange(List<Range> rangeList) {
+		if (!rangeList.isEmpty()) {
+			System.out.println("Range,	Readings");
+			for (Range range : rangeList) {
+				System.out.println(formatPrintString(range));
+			}
 		}
-		writer.flush();
-		writer.close();
+	}
+
+	public static String formatPrintString(Range range) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(range.getMinimumValue()).append("-").append(range.getMaximumValue()).append(",	")
+				.append(range.getCount());
+		return sb.toString();
 	}
 }

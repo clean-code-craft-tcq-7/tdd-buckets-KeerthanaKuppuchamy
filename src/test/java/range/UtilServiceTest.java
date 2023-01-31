@@ -22,5 +22,15 @@ public class UtilServiceTest {
 		String input = "8,5,4";
 		List<Integer> result = UtilService.convertStringToList(input);
 		assertEquals(new Integer(8), result.get(0));
+
+		// new line
+		input = "8\n,5,4";
+		result = UtilService.convertStringToList(input);
+		assertEquals(new Integer(8), result.get(0));
+
+		// negative value
+		input = "8\n,-5,4";
+		result = UtilService.convertStringToList(input);
+		assertEquals(new Integer(8), result.get(0));
 	}
 }
