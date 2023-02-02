@@ -46,4 +46,12 @@ public class RangeCreaterTest {
 		rangeList = RangeCreater.generateMapForReadingAndRange(values);
 		assertTrue(rangeList.isEmpty());
 	}
+
+	@Test
+	public void testCreateRange() {
+		Range range = RangeCreater.createRange(2, 5, 2);
+		assertEquals(new Integer(2), range.getMinimumValue());
+		assertEquals(new Integer(5), range.getMaximumValue());
+		assertEquals(new Integer(2), range.getCount());
+	}
 }
