@@ -3,7 +3,6 @@ package range;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class UtilService {
 
@@ -29,6 +28,10 @@ public class UtilService {
 	}
 
 	public static List<Integer> getAbsoluteValue(List<Integer> values) {
-		return values.stream().map(v -> Math.abs(v)).collect(Collectors.toList());
+		List<Integer> absoluteValue = new ArrayList<Integer>();
+		for (Integer value : values) {
+			absoluteValue.add(Math.abs(value));
+		}
+		return absoluteValue;
 	}
 }
