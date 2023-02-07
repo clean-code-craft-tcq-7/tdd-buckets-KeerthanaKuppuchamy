@@ -3,6 +3,7 @@ package range;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UtilService {
 
@@ -17,5 +18,17 @@ public class UtilService {
 			readings.add(Integer.valueOf(value));
 		}
 		return readings;
+	}
+
+	public static Range createRange(int minValue, int maxValue, int count) {
+		Range range = new Range();
+		range.setCount(count);
+		range.setMaximumValue(maxValue);
+		range.setMinimumValue(minValue);
+		return range;
+	}
+
+	public static List<Integer> getAbsoluteValue(List<Integer> values) {
+		return values.stream().map(v -> Math.abs(v)).collect(Collectors.toList());
 	}
 }
